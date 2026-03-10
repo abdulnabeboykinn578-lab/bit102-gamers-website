@@ -8,21 +8,21 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   
   <style>
-    /* 纯白表单卡片，确保字体清晰，带锐利黑色边框 */
+   
     .card.bw-card {
       background-color: #ffffff;
       color: #000000;
       border: 2px solid #000000;
-      border-radius: 0; /* 直角设计，更显极简硬朗 */
+      border-radius: 0; 
     }
 
-    /* 输入框极简黑白样式 */
+    
     .form-control {
       background-color: #ffffff;
       color: #000000;
       border: 2px solid #000000;
       border-radius: 0;
-      box-shadow: none !important; /* 覆盖 Bootstrap 默认的高光 */
+      box-shadow: none !important; 
     }
     .form-control::placeholder {
       color: #888888; 
@@ -31,7 +31,7 @@
       border-color: #000000;
     }
 
-    /* 提交按钮：黑底白字，Hover时反转 */
+  
     .btn-submit {
       background-color: #000000; 
       color: #ffffff;
@@ -46,7 +46,7 @@
       color: #000000;
     }
 
-    /* 错误提示文字 (警示红加粗) */
+  
     .error-msg {
       color: #d32f2f;
       font-weight: bold;
@@ -139,7 +139,7 @@
     
     const form = document.querySelector("#gamerSignupForm");
 
-    // 交互 1: 表单验证 (双重正则判断邮箱或手机号)
+   
     form.addEventListener("submit", function(e) {
       let isValid = true;
 
@@ -147,7 +147,6 @@
       const contact = document.querySelector("#contact").value.trim();
       const password = document.querySelector("#password").value;
 
-      // 1. 验证用户名
       if (username.length < 3) {
         document.querySelector("#usernameError").style.display = "block";
         isValid = false;
@@ -155,7 +154,7 @@
         document.querySelector("#usernameError").style.display = "none";
       }
 
-      // 2. 验证邮箱 OR 手机号 (正则表达式)
+    
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const phoneRegex = /^[0-9+\-\s]{8,15}$/; 
       
@@ -166,7 +165,6 @@
         document.querySelector("#contactError").style.display = "none";
       }
 
-      // 3. 验证密码
       const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
       if (!passwordRegex.test(password)) {
         document.querySelector("#passwordError").style.display = "block";
@@ -175,17 +173,16 @@
         document.querySelector("#passwordError").style.display = "none";
       }
 
-      // 拦截与成功逻辑
       if (!isValid) {
         e.preventDefault(); 
       } else {
-        e.preventDefault(); // 演示用，阻止刷新
+        e.preventDefault(); 
         alert("Account Created Successfully!\nWelcome, " + username + "!");
         form.reset(); 
       }
     });
 
-    // 交互 2: 焦点获取时变为浅灰色 (Focus/Blur)
+
     function setBackground(e) {
       if (e.type === "focus") {
         e.target.style.backgroundColor = "#f8f9fa"; // 换成了更亮一点的浅灰，适配白底
