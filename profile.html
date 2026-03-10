@@ -155,10 +155,18 @@
       }
 
     
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      const phoneRegex = /^[0-9+\-\s]{8,15}$/; 
-      
-      if (!emailRegex.test(contact) && !phoneRegex.test(contact)) {
+    let isEmail = false;
+      let isPhone = false;
+
+      if (contact.includes("@") && contact.includes(".")) {
+        isEmail = true;
+      }
+
+      if (contact.length >= 8 && contact.length <= 15 && !isNaN(contact)) {
+        isPhone = true;
+      }
+
+      if (isEmail === false && isPhone === false) {
         document.querySelector("#contactError").style.display = "block";
         isValid = false;
       } else {
@@ -185,9 +193,9 @@
 
     function setBackground(e) {
       if (e.type === "focus") {
-        e.target.style.backgroundColor = "#f8f9fa"; // 换成了更亮一点的浅灰，适配白底
+        e.target.style.backgroundColor = "#f8f9fa"; 
       } else if (e.type === "blur") {
-        e.target.style.backgroundColor = "#ffffff"; // 恢复纯白
+        e.target.style.backgroundColor = "#ffffff"; 
       }
     }
 
