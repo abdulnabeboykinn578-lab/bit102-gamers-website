@@ -173,8 +173,20 @@
         document.querySelector("#contactError").style.display = "none";
       }
 
-      const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
-      if (!passwordRegex.test(password)) {
+      let hasLetter = false;
+      let hasNumber = false;
+
+      for (let i = 0; i < password.length; i++) {
+        let char = password[i];
+        if ((char >= 'A' && char <= 'Z') || (char >= 'a' && char <= 'z')) {
+          hasLetter = true;
+        }
+        if (char >= '0' && char <= '9') {
+          hasNumber = true;
+        }
+      }
+
+      if (password.length < 6 || hasLetter === false || hasNumber === false) {
         document.querySelector("#passwordError").style.display = "block";
         isValid = false;
       } else {
