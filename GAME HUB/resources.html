@@ -7,19 +7,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root {
-            --steam-dark: #171a21;
-            --steam-blue: #1b2838;
-            --steam-light-blue: #66c0f4;
-            --steam-nav: #2a475e;
+            --primary-color: #0d6efd;
         }
-        body { background-color: #0b0e14; color: #c1c2c4; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f8f9fa; color: #212529; font-family: 'Segoe UI', sans-serif; }
         
-        /* 导航栏 */
-        .navbar { background-color: var(--steam-dark); border-bottom: 2px solid var(--steam-nav); }
-        .nav-link { color: #dcdedf !important; transition: 0.3s; }
-        .nav-link:hover { color: var(--steam-light-blue) !important; }
+        /* Navbar */
+        .navbar { background-color: #212529; border-bottom: none; }
+        .nav-link { color: rgba(255,255,255,.55) !important; transition: 0.3s; }
+        .nav-link:hover, .nav-link.active { color: #fff !important; }
 
-        /* 分类卡片样式 */
+        /* Category Cards */
         .cat-card {
             height: 120px;
             background-size: cover;
@@ -34,56 +31,62 @@
             margin-bottom: 15px;
             position: relative;
         }
-        .cat-card:hover { transform: scale(1.05); border-color: white; }
+        .cat-card:hover { transform: scale(1.05); border-color: var(--primary-color); }
         .cat-card span { 
-            background: rgba(255, 255, 255, 0.9); color: black; padding: 5px 15px; 
+            background: rgba(255, 255, 255, 0.9); color: #212529; padding: 5px 15px; 
             font-weight: bold; text-transform: uppercase; z-index: 2;
         }
 
-        /* 游戏卡片样式 */
-        .game-card { background: var(--steam-blue); border: none; transition: 0.3s; height: 100%; }
-        .game-card:hover { transform: translateY(-5px); box-shadow: 0 0 15px var(--steam-light-blue); }
-        .card-img-top { height: 160px; object-fit: cover; background-color: #000; }
-        .rating { color: #ffc107; }
-        .search-input { background: var(--steam-nav); border: none; color: white; }
+        /* Game Cards */
+        .game-card { background: #ffffff; border: 1px solid rgba(0,0,0,.125); transition: 0.3s; height: 100%; }
+        .game-card:hover { transform: translateY(-5px); box-shadow: 0 4px 15px rgba(0,0,0,.1); }
+        .card-img-top { height: 160px; object-fit: cover; background-color: #f8f9fa; }
+        
+        /* Rating Color */
+        .rating { color: #ffc107; font-weight: bold; }
+        
+        /* Search Input */
+        .search-input { background: #ffffff; border: 1px solid #ced4da; color: #212529; }
+        .search-input::placeholder { color: #6c757d; }
+        .search-input:focus { outline: none; border-color: #86b7fe; box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25); }
     </style>
 </head>
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html">GAME <span style="color: var(--steam-light-blue);">HUB</span></a>
+            <a class="navbar-brand fw-bold" href="index.html">GAME <span style="color: var(--primary-color);">HUB</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">主页 (Home)</a></li>
-                    <li class="nav-item"><a class="nav-link" href="community.html">社区 (Community)</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="resources.html">攻略 (Resources)</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="community.html">Community</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="resources.html">Resources</a></li>
                 </ul>
                 <div class="d-flex align-items-center gap-3">
-                    <input class="form-control search-input btn-sm" type="search" id="gameSearch" placeholder="搜索游戏..." onkeyup="handleSearch()">
-                    <a href="login.html" class="btn btn-outline-info btn-sm">登录 (Login)</a>
+                    <input class="form-control search-input btn-sm" type="search" id="gameSearch" placeholder="Search games..." onkeyup="handleSearch()">
+                    <a href="login.html" class="btn btn-outline-light btn-sm">Login</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <div class="container py-5">
-        <h5 class="text-white mb-4">按分类浏览 (CATEGORIES)</h5>
+        <h5 class="text-dark mb-4">BROWSE BY CATEGORIES</h5>
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 mb-5">
-            <div class="col" onclick="filterType('fps')"><div class="cat-card" style="background-image: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=200')"><span>FPS</span></div></div>
-            <div class="col" onclick="filterType('moba')"><div class="cat-card" style="background-image: url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=200')"><span>MOBA</span></div></div>
-            <div class="col" onclick="filterType('action')"><div class="cat-card" style="background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?w=200')"><span>ACTION</span></div></div>
-            <div class="col" onclick="filterType('adventure')"><div class="cat-card" style="background-image: url('https://images.unsplash.com/photo-1542751110-97427bbecf20?w=200')"><span>ADVENTURE</span></div></div>
-            <div class="col" onclick="filterType('rpg')"><div class="cat-card" style="background-image: url('https://images.unsplash.com/photo-1605899435973-ca2d1a8861cf?w=200')"><span>RPG</span></div></div>
-            <div class="col" onclick="filterType('strategy')"><div class="cat-card" style="background-image: url('https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=200')"><span>STRATEGY</span></div></div>
+            <div class="col" onclick="filterType('fps')"><div class="cat-card" style="background-image: url('https://cdn.akamai.steamstatic.com/steam/apps/730/header.jpg')"><span>FPS</span></div></div>
+            <div class="col" onclick="filterType('moba')"><div class="cat-card" style="background-image: url('https://cdn.akamai.steamstatic.com/steam/apps/570/header.jpg')"><span>MOBA</span></div></div>
+            <div class="col" onclick="filterType('action')"><div class="cat-card" style="background-image: url('https://cdn.akamai.steamstatic.com/steam/apps/1593500/header.jpg')"><span>ACTION</span></div></div>
+            <div class="col" onclick="filterType('adventure')"><div class="cat-card" style="background-image: url('https://cdn.akamai.steamstatic.com/steam/apps/1174180/header.jpg')"><span>ADVENTURE</span></div></div>
+            <div class="col" onclick="filterType('rpg')"><div class="cat-card" style="background-image: url('https://cdn.akamai.steamstatic.com/steam/apps/1086940/header.jpg')"><span>RPG</span></div></div>
+            <div class="col" onclick="filterType('strategy')"><div class="cat-card" style="background-image: url('https://cdn.akamai.steamstatic.com/steam/apps/289070/header.jpg')"><span>STRATEGY</span></div></div>
         </div>
 
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 id="listTitle" class="text-white">热门资源列表</h2>
-            <button class="btn btn-sm btn-secondary" onclick="resetFilter()">显示全部</button>
+            <h2 id="listTitle" class="text-dark">Popular Resources</h2>
+            <button class="btn btn-sm btn-secondary" onclick="resetFilter()">Show All</button>
         </div>
         
         <div class="row g-4" id="gameGrid"></div>
@@ -91,66 +94,59 @@
 
     <script>
         const gameData = [
-            // MOBA (5个) - 修正：补全数据
-            { type: 'moba', title: '英雄联盟 (League of Legends)', rating: 5, img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400' },
-            { type: 'moba', title: 'Dota 2', rating: 5, img: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400' },
-            { type: 'moba', title: '王者荣耀 (Honor of Kings)', rating: 4, img: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400' },
-            { type: 'moba', title: '风暴英雄 (HotS)', rating: 3, img: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400' },
-            { type: 'moba', title: '宝可梦大集结', rating: 4, img: 'https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=400' },
+            // MOBA
             
-            // ADVENTURE (5个) - 修正：图片对应
-            { type: 'adventure', title: '艾尔登法环 (Elden Ring)', rating: 5, img: 'https://images.unsplash.com/photo-1542751110-97427bbecf20?w=400' },
-            { type: 'adventure', title: '巫师 3：狂猎', rating: 5, img: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400' },
-            { type: 'adventure', title: '塞尔达传说：荒野之息', rating: 5, img: 'https://images.unsplash.com/photo-1627850604058-52e40de1b847?w=400' },
-            { type: 'adventure', title: '古墓丽影：崛起', rating: 4, img: 'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400' },
-            { type: 'adventure', title: '荒野大镖客 2', rating: 5, img: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400' },
+            { type: 'moba', title: 'Dota 2', rating: 5, img: 'https://cdn.akamai.steamstatic.com/steam/apps/570/header.jpg' },
+          
+            // ADVENTURE
+            { type: 'adventure', title: 'Elden Ring', rating: 5, img: 'https://cdn.akamai.steamstatic.com/steam/apps/1245620/header.jpg' },
+            { type: 'adventure', title: 'The Witcher 3: Wild Hunt', rating: 5, img: 'https://cdn.akamai.steamstatic.com/steam/apps/292030/header.jpg' },
+            { type: 'adventure', title: 'Rise of the Tomb Raider', rating: 4, img: 'https://cdn.akamai.steamstatic.com/steam/apps/391220/header.jpg' },
+            { type: 'adventure', title: 'Red Dead Redemption 2', rating: 5, img: 'https://cdn.akamai.steamstatic.com/steam/apps/1174180/header.jpg' },
 
-            // FPS (5个)
-            { type: 'fps', title: '反恐精英 2 (CS2)', rating: 4, img: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=400' },
-            { type: 'fps', title: '特战英豪 (Valorant)', rating: 5, img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400' },
-            { type: 'fps', title: '使命召唤', rating: 4, img: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400' },
-            { type: 'fps', title: '守望先锋 2', rating: 3, img: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=400' },
-            { type: 'fps', title: 'Apex 英雄', rating: 4, img: 'https://images.unsplash.com/photo-1614680376270-22765796b343?w=400' },
+            // FPS
+            { type: 'fps', title: 'Counter-Strike 2', rating: 4, img: 'https://cdn.akamai.steamstatic.com/steam/apps/730/header.jpg' },
+            { type: 'fps', title: 'Call of Duty', rating: 4, img: 'https://cdn.akamai.steamstatic.com/steam/apps/1938090/header.jpg' },
+            { type: 'fps', title: 'Apex Legends', rating: 4, img: 'https://cdn.akamai.steamstatic.com/steam/apps/1172470/header.jpg' },
 
-            // ACTION (5个)
-            { type: 'action', title: '黑神话：悟空', rating: 5, img: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=400' },
-            { type: 'action', title: '只狼：影逝二度', rating: 5, img: 'https://images.unsplash.com/photo-1542751110-97427bbecf20?w=400' },
-            { type: 'action', title: '鬼泣 5', rating: 4, img: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400' },
-            { type: 'action', title: '战神 (God of War)', rating: 5, img: 'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400' },
-            { type: 'action', title: '仁王 2', rating: 4, img: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400' },
+            // ACTION
+            { type: 'action', title: 'Black Myth: Wukong', rating: 5, img: 'https://cdn.akamai.steamstatic.com/steam/apps/2358720/header.jpg' },
+            { type: 'action', title: 'Sekiro: Shadows Die Twice', rating: 5, img: 'https://cdn.akamai.steamstatic.com/steam/apps/814380/header.jpg' },
+            { type: 'action', title: 'Devil May Cry 5', rating: 4, img: 'https://cdn.akamai.steamstatic.com/steam/apps/601150/header.jpg' },
+            { type: 'action', title: 'God of War', rating: 5, img: 'https://cdn.akamai.steamstatic.com/steam/apps/1593500/header.jpg' },
+            { type: 'action', title: 'Nioh 2', rating: 4, img: 'https://cdn.akamai.steamstatic.com/steam/apps/1300860/header.jpg' },
 
-            // RPG & STRATEGY 同样补全
-            { type: 'rpg', title: '赛博朋克 2077', rating: 4, img: 'https://images.unsplash.com/photo-1605899435973-ca2d1a8861cf?w=400' },
-            { type: 'rpg', title: '博德之门 3', rating: 5, img: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400' },
-            { type: 'rpg', title: '星空 (Starfield)', rating: 3, img: 'https://images.unsplash.com/photo-1614680376270-22765796b343?w=400' },
-            { type: 'rpg', title: '最终幻想 16', rating: 4, img: 'https://images.unsplash.com/photo-1542751110-97427bbecf20?w=400' },
-            { type: 'rpg', title: '地平线：西之绝境', rating: 4, img: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400' },
+            // RPG
+            { type: 'rpg', title: 'Cyberpunk 2077', rating: 4, img: 'https://cdn.akamai.steamstatic.com/steam/apps/1091500/header.jpg' },
+            { type: 'rpg', title: 'Baldur\'s Gate 3', rating: 5, img: 'https://cdn.akamai.steamstatic.com/steam/apps/1086940/header.jpg' },
+            { type: 'rpg', title: 'Starfield', rating: 3, img: 'https://cdn.akamai.steamstatic.com/steam/apps/1716740/header.jpg' },
+            { type: 'rpg', title: 'Horizon Forbidden West', rating: 4, img: 'https://cdn.akamai.steamstatic.com/steam/apps/2420110/header.jpg' },
 
-            { type: 'strategy', title: '文明 6', rating: 5, img: 'https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=400' },
-            { type: 'strategy', title: '星际争霸 2', rating: 5, img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400' },
-            { type: 'strategy', title: '全战：三国', rating: 4, img: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400' },
-            { type: 'strategy', title: '帝国时代 4', rating: 4, img: 'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400' },
-            { type: 'strategy', title: '钢铁雄心 4', rating: 4, img: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400' }
+            // STRATEGY
+            { type: 'strategy', title: 'Civilization VI', rating: 5, img: 'https://cdn.akamai.steamstatic.com/steam/apps/289070/header.jpg' },
+            { type: 'strategy', title: 'Total War: Three Kingdoms', rating: 4, img: 'https://cdn.akamai.steamstatic.com/steam/apps/779340/header.jpg' },
+            { type: 'strategy', title: 'Age of Empires IV', rating: 4, img: 'https://cdn.akamai.steamstatic.com/steam/apps/1466860/header.jpg' },
+            { type: 'strategy', title: 'Hearts of Iron IV', rating: 4, img: 'https://cdn.akamai.steamstatic.com/steam/apps/394360/header.jpg' }
         ];
 
         function render(items) {
             const grid = document.getElementById('gameGrid');
             grid.innerHTML = items.length > 0 ? items.map(item => `
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card game-card text-white shadow">
-                        <img src="${item.img}" class="card-img-top" alt="${item.title}" onerror="this.src='https://via.placeholder.com/400x160/1b2838/ffffff?text=Game+Resource'">
+                    <div class="card game-card text-dark shadow-sm">
+                        <img src="${item.img}" class="card-img-top" alt="${item.title}" onerror="this.src='https://via.placeholder.com/400x160/f8f9fa/212529?text=Game+Resource'">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title h6">${item.title}</h5>
-                            <div class="rating mb-3">${'★'.repeat(item.rating)}${'☆'.repeat(5-item.rating)}</div>
-                            <button class="btn btn-sm btn-outline-info w-100 mt-auto">获取攻略资源</button>
+                            <div class="rating mb-3">⭐ Rating: ${item.rating}/5</div>
+                            <button class="btn btn-sm btn-primary w-100 mt-auto">Get Resources</button>
                         </div>
                     </div>
                 </div>
-            `).join('') : '<div class="col-12 text-center py-5"><h5>未找到匹配的游戏资源...</h5></div>';
+            `).join('') : '<div class="col-12 text-center py-5"><h5 class="text-dark">No matching resources found...</h5></div>';
         }
 
         function filterType(t) {
-            document.getElementById('listTitle').innerText = t.toUpperCase() + " 资源专区";
+            document.getElementById('listTitle').innerText = t.toUpperCase() + " Resources";
             render(gameData.filter(g => g.type === t));
         }
 
@@ -160,7 +156,7 @@
         }
 
         function resetFilter() {
-            document.getElementById('listTitle').innerText = "所有资源列表";
+            document.getElementById('listTitle').innerText = "All Resources";
             document.getElementById('gameSearch').value = "";
             render(gameData);
         }
