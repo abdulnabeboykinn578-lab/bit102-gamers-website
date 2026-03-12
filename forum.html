@@ -9,9 +9,17 @@
         :root {
             --primary-color: #0d6efd;
         }
-        body { background-color: #f8f9fa; color: #212529; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
+        /* 确保页面至少有 100% 的视窗高度，并且内容使用 flex 纵向排列 */
+        body { 
+            background-color: #f8f9fa; 
+            color: #212529; 
+            font-family: 'Segoe UI', sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+        }
         
-        /* Navbar - 完美匹配截图的极简深色导航栏 */
+        /* Navbar */
         .navbar { background-color: #212529; border-bottom: none; }
         .nav-link { color: rgba(255,255,255,.55) !important; transition: 0.3s; }
         .nav-link:hover, .nav-link.active { color: #fff !important; }
@@ -64,7 +72,7 @@
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="forum.html">Forum</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="community.html">Forum</a></li>
                     <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
                     <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
                 </ul>
@@ -88,17 +96,15 @@
                         <li class="nav-item"><a class="nav-link" href="#" onclick="filterPosts('lfg', this); return false;">LFG</a></li>
                         <li class="nav-item"><a class="nav-link" href="#" onclick="filterPosts('support', this); return false;">Tech Support</a></li>
                     </ul>
-                    
                     <input class="form-control search-input btn-sm" type="search" id="forumSearch" placeholder="Search topics..." onkeyup="searchPosts()">
                 </div>
 
-                <div id="postsContainer" class="d-flex flex-column gap-3">
-                    </div>
+                <div id="postsContainer" class="d-flex flex-column gap-3"></div>
             </div>
         </div>
     </div>
 
-    <footer class="bg-dark text-light text-center py-3 mt-auto">
+    <footer class="text-light text-center py-3 mt-auto" style="background-color: #212529;">
         <small>© 2026 Gamers Hub • BIT102 Assignment 1</small>
     </footer>
 
@@ -114,9 +120,7 @@
                         <span id="modalPostCategory" class="badge bg-secondary text-uppercase">CATEGORY</span>
                         <small class="text-muted">Posted by <span id="modalPostAuthor" class="fw-bold text-dark">Author</span></small>
                     </div>
-                    <p id="modalPostContent" class="fs-6" style="line-height: 1.6;">
-                        Post content goes here...
-                    </p>
+                    <p id="modalPostContent" class="fs-6" style="line-height: 1.6;"></p>
                     <hr>
                     <div class="text-muted small">
                         <span id="modalPostReplies" class="fw-bold">0</span> Replies • <span id="modalPostViews" class="fw-bold">0</span> Views
@@ -169,14 +173,8 @@
                         <small class="text-muted">Posted by <span class="fw-bold text-dark">${post.author}</span> • ${post.time}</small>
                     </div>
                     <div class="d-flex gap-4 text-center text-muted small">
-                        <div>
-                            <div class="fw-bold text-dark fs-6">${post.replies}</div>
-                            <div>Replies</div>
-                        </div>
-                        <div>
-                            <div class="fw-bold text-dark fs-6">${post.views}</div>
-                            <div>Views</div>
-                        </div>
+                        <div><div class="fw-bold text-dark fs-6">${post.replies}</div><div>Replies</div></div>
+                        <div><div class="fw-bold text-dark fs-6">${post.views}</div><div>Views</div></div>
                     </div>
                 </div>
             `).join('');
@@ -193,7 +191,6 @@
         function searchPosts() {
             const query = document.getElementById('forumSearch').value.toLowerCase();
             const filtered = forumPosts.filter(p => p.title.toLowerCase().includes(query) || p.author.toLowerCase().includes(query));
-            
             document.querySelectorAll('#categoryTabs .nav-link').forEach(tab => tab.classList.remove('active'));
             renderPosts(filtered);
         }
@@ -213,15 +210,12 @@
             badge.className = `badge ${getBadgeClass(post.category)} text-uppercase`;
             badge.innerText = post.category;
 
-            if(!postModal) {
-                postModal = new bootstrap.Modal(document.getElementById('postModal'));
-            }
+            if(!postModal) postModal = new bootstrap.Modal(document.getElementById('postModal'));
             postModal.show();
         }
 
         window.onload = () => renderPosts(forumPosts);
     </script>
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
