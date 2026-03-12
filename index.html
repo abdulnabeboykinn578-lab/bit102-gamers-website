@@ -3,39 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameHub - Home</title>
+    <title>Gamers Hub - Home</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <style>
         /* Base Styles */
         body {
-            background-color: white; 
-            color: black;
+            background-color: #f4f6f9; 
+            color: #333333;
             font-family: Arial, sans-serif; 
         }
 
+        /* Square borders to match partner's design */
         .btn, .form-control, .card, .border {
             border-radius: 0 !important; 
-        }
-
-        .navbar {
-            background-color: white !important; 
-            border-bottom: 2px solid #dddddd; 
-        }
-
-        .navbar-brand {
-            font-weight: bold;
-            color: black !important;
-            letter-spacing: 1px;
-        }
-
-        .nav-link {
-            color: black !important; 
-        }
-        
-        .nav-link:hover {
-            color: blue !important; 
         }
 
         /* Welcome Section */
@@ -45,7 +27,7 @@
             padding: 80px 20px;
             text-align: center;
             margin-top: 56px; 
-            border-bottom: 5px solid blue; 
+            border-bottom: 5px solid #0d6efd; 
         }
 
         /* Title Styles */
@@ -55,15 +37,16 @@
             font-size: 1.8rem;
             text-transform: uppercase; 
             letter-spacing: 2px; 
-            color: black;
-            border-left: 6px solid blue; 
+            color: #1a1e21;
+            border-left: 6px solid #0d6efd; 
             padding-left: 12px;
             margin-bottom: 25px;
         }
 
+        /* Card and Sidebar Styles (Basic Box Shadow) */
         .post-card, .sidebar-box {
             background-color: white;
-            border: 1px solid #cccccc;
+            border: 1px solid #cccccc; 
             padding: 20px;
             margin-bottom: 20px;
             box-shadow: 3px 3px 5px #cccccc; 
@@ -73,7 +56,7 @@
             display: none; 
         }
 
-        /* Class to show cards */
+        /* Class to show cards dynamically */
         .show-card {
             display: block;
         }
@@ -88,7 +71,7 @@
         
         .post-title:hover {
             text-decoration: underline; 
-            color: blue;
+            color: #0a58ca;
         }
 
         .post-meta {
@@ -97,3 +80,127 @@
         }
     </style>
 </head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="topNav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">Gamers Hub</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="forum.html">Forum</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li> 
+                </ul>
+                
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item" style="margin-right: 10px;">
+                        <a href="profile.html" class="btn" style="color: white; border: 1px solid white;">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="profile.html" class="btn" style="background-color: white; color: black; border: 1px solid white;">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="welcome-box">
+        <div class="container">
+            <h1 style="font-family: 'Arial Black', Impact, sans-serif; text-transform: uppercase;">Welcome to Gamers Hub</h1>
+            <p class="lead mt-3">A simple place for gamers to connect, share, and play.</p>
+        </div>
+    </header>
+
+    <main class="container mt-5">
+        
+        <h3 class="fancy-title">[HOT] Trending Player Posts</h3>
+        
+        <div class="row mt-4">
+            <div class="col-md-8">
+                
+                <div class="post-card scroll-item">
+                    <div class="post-title" onclick="alert('Opening discussion: Elden Ring')">[Discussion] Any tips for beginners in Elden Ring?</div>
+                    <div class="post-meta">Posted by PlayerOne • 2 hours ago • 45 Comments</div>
+                    <p class="mt-2 text-muted">I just bought the game and keep dying to the first boss. What kind of build should I start with?</p>
+                </div>
+
+                <div class="post-card scroll-item">
+                    <div class="post-title" onclick="alert('Opening LFG: Valorant')">[LFG] Looking for a Valorant team (Silver/Gold rank)</div>
+                    <div class="post-meta">Posted by JettMain • 5 hours ago • 12 Comments</div>
+                    <p class="mt-2 text-muted">I usually play controller or duelist. Looking for chill people to play competitive with this weekend. Voice chat required!</p>
+                </div>
+
+                <div class="post-card scroll-item">
+                    <div class="post-title" onclick="alert('Opening News: Next-gen consoles')">[News] Next-gen console rumors: What we know so far</div>
+                    <div class="post-meta">Posted by TechGuru • 1 day ago • 120 Comments</div>
+                    <p class="mt-2 text-muted">Let's discuss the leaked specs for the upcoming consoles. Do you think the price increase is justified?</p>
+                </div>
+                
+                <div class="post-card scroll-item">
+                    <div class="post-title" onclick="alert('Opening Guide: Optimize PC')">[Guide] How to optimize your PC for maximum FPS</div>
+                    <div class="post-meta">Posted by PCBuilder • 1 day ago • 89 Comments</div>
+                    <p class="mt-2 text-muted">A step-by-step guide on tweaking your Windows settings and graphics drivers to get the most out of your hardware.</p>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="sidebar-box">
+                    <h5 class="fw-bold border-bottom pb-2">About Community</h5>
+                    <p class="text-muted small mt-2">Gamers Hub is a community-driven forum where gamers from all platforms come together to share their passion.</p>
+                    <div class="bg-light p-2 mb-3 border">
+                        <p class="mb-1"><strong>Members:</strong> 5,204</p>
+                        <p class="mb-0"><strong>Online:</strong> <span class="text-success fw-bold" id="onlineCount">128</span></p>
+                    </div>
+                    <button class="btn" style="background-color: #0d6efd; color: white; border: none; width: 100%; padding: 8px;" onclick="changeOnlineCount()">Refresh Count</button>
+                </div>
+            </div>
+        </div>
+        
+        <div style="height: 300px;"></div>
+    </main>
+
+    <footer class="bg-dark text-light text-center py-3 mt-auto">
+        <small>© 2026 Gamers Hub • BIT102 Assignment 1</small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Simple JavaScript Interactions
+
+        var cards = document.getElementsByClassName('scroll-item');
+        
+        function checkCardsVisibility() {
+            var windowHeight = window.innerHeight; 
+            
+            for (var i = 0; i < cards.length; i++) {
+                var rect = cards[i].getBoundingClientRect();
+                
+                if (rect.top < windowHeight) {
+                    cards[i].className = "post-card scroll-item show-card"; 
+                }
+            }
+        }
+
+        window.onscroll = function() {
+            checkCardsVisibility();
+        };
+
+        window.onload = function() {
+            checkCardsVisibility();
+        };
+
+        // Sidebar feature
+        function changeOnlineCount() {
+            var countElement = document.getElementById('onlineCount');
+            var randomCount = Math.floor(Math.random() * 100) + 100; 
+            countElement.innerHTML = randomCount;
+        }
+    </script>
+</body>
+</html>
