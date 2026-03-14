@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Resources - Gamers Hub</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
 
 <style>
 body{
@@ -24,7 +24,7 @@ object-fit:cover;
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 <div class="container">
-<a class="navbar-brand" href="index.html">Gamers Hub</a>
+<a class="navbar-brand fw-bold" href="index.html">Gamers Hub</a>
 
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
 <span class="navbar-toggler-icon"></span>
@@ -33,21 +33,10 @@ object-fit:cover;
 <div class="collapse navbar-collapse" id="navMenu">
 <ul class="navbar-nav ms-auto">
 
-<li class="nav-item">
-<a class="nav-link" href="index.html">Home</a>
-</li>
-
-<li class="nav-item">
-<a class="nav-link" href="forum.html">Forum</a>
-</li>
-
-<li class="nav-item">
-<a class="nav-link active" href="resources.html">Resources</a>
-</li>
-
-<li class="nav-item">
-<a class="nav-link" href="profile.html">Profile</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="forum.html">Forum</a></li>
+<li class="nav-item"><a class="nav-link active" aria-current="page" href="resources.html">Resources</a></li>
+<li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
 
 </ul>
 </div>
@@ -56,30 +45,39 @@ object-fit:cover;
 
 <header class="py-4 bg-light border-bottom">
 <div class="container">
-<h1>Game Guides and Tips</h1>
-<p class="text-muted">Resources page created by: Your Name</p>
+<h1 class="h3 mb-1">Game Resources</h1>
+<p class="text-muted mb-0">Guides, tools and updates for gamers. Click “View” to see details.</p>
 </div>
 </header>
 
 <main class="container my-5 flex-grow-1">
 
-<div class="row">
+<div class="d-flex flex-wrap gap-2 mb-4">
+<button class="btn btn-outline-dark btn-sm filter-btn" data-filter="all">All</button>
+<button class="btn btn-outline-dark btn-sm filter-btn" data-filter="FPS">FPS</button>
+<button class="btn btn-outline-dark btn-sm filter-btn" data-filter="RPG">RPG</button>
+<button class="btn btn-outline-dark btn-sm filter-btn" data-filter="MOBA">MOBA</button>
+<button class="btn btn-outline-dark btn-sm filter-btn" data-filter="Mobile">Mobile</button>
+</div>
+
+<div class="row g-4" id="resourcesGrid">
 
 <!-- Valorant -->
-<div class="col-md-4 mb-4">
+<div class="col-12 col-md-6 col-lg-4 resource-card" data-category="FPS">
 <div class="card h-100">
 
 <img src="https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/blt5a6b3c62c2e6f2c0/63e6a9c2c3d8e84fcd5a4e3e/VALORANT_2023_KeyArt_4K.jpg"
 class="card-img-top">
 
 <div class="card-body">
-<h5>Valorant Aim Practice</h5>
-<p>This guide helps improve aiming skills.</p>
+<span class="badge bg-secondary">FPS</span>
+<h5 class="card-title mt-2">Valorant Aim Guide</h5>
+<p class="card-text">Short drills to improve aim and crosshair placement.</p>
 
 <button class="btn btn-primary btn-sm view-btn"
-data-title="Valorant Aim Practice"
-data-body="Practice tracking and flick shots for 10 minutes every day.">
-View Details
+data-title="Valorant Aim Guide"
+data-body="Warm-up 10 minutes daily: tracking + flick shots. Keep crosshair at head level. Play deathmatch for consistency.">
+View
 </button>
 
 </div>
@@ -87,20 +85,21 @@ View Details
 </div>
 
 <!-- Genshin -->
-<div class="col-md-4 mb-4">
+<div class="col-12 col-md-6 col-lg-4 resource-card" data-category="RPG">
 <div class="card h-100">
 
 <img src="https://upload.wikimedia.org/wikipedia/en/5/5d/Genshin_Impact_key_visual.jpg"
 class="card-img-top">
 
 <div class="card-body">
-<h5>Genshin Team Building</h5>
-<p>Basic team building strategy for beginners.</p>
+<span class="badge bg-secondary">RPG</span>
+<h5 class="card-title mt-2">Genshin Team Building Tips</h5>
+<p class="card-text">How to build balanced teams using elemental synergy.</p>
 
 <button class="btn btn-primary btn-sm view-btn"
-data-title="Genshin Team Building"
-data-body="Use one main DPS and support characters for balance.">
-View Details
+data-title="Genshin Team Building Tips"
+data-body="Build around elemental reactions. Mix DPS + support + healer/shielder. Focus on leveling one main DPS first.">
+View
 </button>
 
 </div>
@@ -108,20 +107,21 @@ View Details
 </div>
 
 <!-- Dota -->
-<div class="col-md-4 mb-4">
+<div class="col-12 col-md-6 col-lg-4 resource-card" data-category="MOBA">
 <div class="card h-100">
 
 <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/570/header.jpg"
 class="card-img-top">
 
 <div class="card-body">
-<h5>Dota 2 Ward Guide</h5>
-<p>Learn important warding locations.</p>
+<span class="badge bg-secondary">MOBA</span>
+<h5 class="card-title mt-2">Dota 2 Ward Spots</h5>
+<p class="card-text">Vision control basics: where and when to ward.</p>
 
 <button class="btn btn-primary btn-sm view-btn"
-data-title="Dota 2 Ward Guide"
-data-body="Use wards to control vision around objectives.">
-View Details
+data-title="Dota 2 Ward Spots"
+data-body="Ward near objectives before fights. Deward common high grounds. Use smoke + sentry to safely remove enemy vision.">
+View
 </button>
 
 </div>
@@ -129,20 +129,21 @@ View Details
 </div>
 
 <!-- MLBB -->
-<div class="col-md-4 mb-4">
+<div class="col-12 col-md-6 col-lg-4 resource-card" data-category="Mobile">
 <div class="card h-100">
 
 <img src="https://upload.wikimedia.org/wikipedia/en/9/9f/Mobile_Legends_Bang_Bang_Logo.jpg"
 class="card-img-top">
 
 <div class="card-body">
-<h5>MLBB Hero Tips</h5>
-<p>Beginner hero tips for ranked matches.</p>
+<span class="badge bg-secondary">Mobile</span>
+<h5 class="card-title mt-2">MLBB Hero Notes</h5>
+<p class="card-text">Quick notes for casual ranked picks and counters.</p>
 
 <button class="btn btn-primary btn-sm view-btn"
-data-title="MLBB Hero Tips"
-data-body="Choose heroes based on team composition.">
-View Details
+data-title="MLBB Hero Notes"
+data-body="Choose heroes that fit your role. Learn 2–3 comfort heroes. Build defense if enemies have strong burst damage.">
+View
 </button>
 
 </div>
@@ -150,20 +151,21 @@ View Details
 </div>
 
 <!-- FPS Settings -->
-<div class="col-md-4 mb-4">
+<div class="col-12 col-md-6 col-lg-4 resource-card" data-category="FPS">
 <div class="card h-100">
 
 <img src="https://cdn.cloudflare.steamstatic.com/steam/apps/730/header.jpg"
 class="card-img-top">
 
 <div class="card-body">
-<h5>FPS Settings Guide</h5>
-<p>Improve performance with better settings.</p>
+<span class="badge bg-secondary">FPS</span>
+<h5 class="card-title mt-2">FPS Settings Checklist</h5>
+<p class="card-text">Basic setup: sensitivity, crosshair, audio.</p>
 
 <button class="btn btn-primary btn-sm view-btn"
-data-title="FPS Settings Guide"
-data-body="Lower graphics settings for stable FPS.">
-View Details
+data-title="FPS Settings Checklist"
+data-body="Keep sensitivity consistent. Turn off motion blur. Use headphones for positional audio. Lower graphics for stable FPS.">
+View
 </button>
 
 </div>
@@ -171,20 +173,21 @@ View Details
 </div>
 
 <!-- RPG Quest -->
-<div class="col-md-4 mb-4">
+<div class="col-12 col-md-6 col-lg-4 resource-card" data-category="RPG">
 <div class="card h-100">
 
 <img src="https://upload.wikimedia.org/wikipedia/en/a/a9/The_Legend_of_Zelda_Breath_of_the_Wild.jpg"
 class="card-img-top">
 
 <div class="card-body">
-<h5>RPG Quest Planning</h5>
-<p>Tips for completing quests efficiently.</p>
+<span class="badge bg-secondary">RPG</span>
+<h5 class="card-title mt-2">Quest Planning Tips</h5>
+<p class="card-text">Plan quest order to save time and avoid missing rewards.</p>
 
 <button class="btn btn-primary btn-sm view-btn"
-data-title="RPG Quest Planning"
-data-body="Focus on main quests first then side quests.">
-View Details
+data-title="Quest Planning Tips"
+data-body="Do main story first, then side quests. Group tasks by location. Track daily/weekly resets if the game has them.">
+View
 </button>
 
 </div>
@@ -197,44 +200,3 @@ View Details
 <footer class="bg-dark text-light text-center py-3 mt-auto">
 <small>© 2026 Gamers Hub • BIT102 Assignment 1</small>
 </footer>
-
-<div class="modal fade" id="resourceModal" tabindex="-1">
-<div class="modal-dialog">
-<div class="modal-content">
-
-<div class="modal-header">
-<h5 class="modal-title" id="modalTitle"></h5>
-<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-</div>
-
-<div class="modal-body" id="modalBody"></div>
-
-</div>
-</div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-
-document.addEventListener("click",function(e){
-
-if(e.target.classList.contains("view-btn")){
-
-var title=e.target.getAttribute("data-title");
-var body=e.target.getAttribute("data-body");
-
-document.getElementById("modalTitle").innerText=title;
-document.getElementById("modalBody").innerText=body;
-
-var modal=new bootstrap.Modal(document.getElementById("resourceModal"));
-modal.show();
-
-}
-
-});
-
-</script>
-
-</body>
-</html>
